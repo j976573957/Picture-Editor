@@ -93,7 +93,7 @@
     self.toolCollectionView.hidden = NO;
     UIView *viewWillHide = self.toolCollectionView;
     if (view == self.toolCollectionView) {
-        viewWillHide = nil;
+//        viewWillHide = nil;
         self.editMode = PVTImageEditModeNone;
     } else {
         if (view == _filterMenu) {
@@ -113,17 +113,10 @@
         [self.navigationController setNavigationBarHidden:viewWillHide != nil];
         self.currMenuView.origin = CGPointMake(0, height);
         view.origin = CGPointMake(0, height - view.height);
-        viewWillHide.origin = CGPointMake(0, height);
-        if (view == self.toolCollectionView) {
-//            self.imageScrollView.transform = CGAffineTransformIdentity;
-        } else {
-            CGFloat scale = 1;
-//            self.imageScrollView.transform = CGAffineTransformMakeScale(scale, scale);
-//            self.imageScrollView.transform = CGAffineTransformTranslate(self.imageScrollView.transform, 0, -self.imageScrollView.y);
-        }
+//        viewWillHide.origin = CGPointMake(0, height);
     } completion:^(BOOL finished) {
         self.currMenuView = view;
-        viewWillHide.hidden = YES;
+        viewWillHide.hidden = NO;
     }];
 }
 
@@ -165,12 +158,12 @@
     PVTEditorToolsCell *cell = (PVTEditorToolsCell *)[collectionView cellForItemAtIndexPath:indexPath];
     NSLog(@"----------- 点击了 ----------- %@", cell.lbTitle.text);
     if (indexPath.row == 0) {
+        [self showMenu:self.filterMenu];
+    }else if (indexPath.row == 1) {
         PVTCropViewController *vc = [[PVTCropViewController alloc] init];
         vc.image = self.imageView.image;
         vc.delegate = self;
         [self presentViewController:vc animated:YES completion:nil];
-    }else if (indexPath.row == 1) {
-        [self showMenu:self.filterMenu];
     }else if (indexPath.row == 2){
         [self showMenu:self.frameMenu];
     }
@@ -203,6 +196,7 @@
         self.imageView.image = self.image;
     }
     _currMenuView.hidden = YES;
+    self.toolCollectionView.hidden = NO;
 }
 
 - (void)confirm:(id)sender {

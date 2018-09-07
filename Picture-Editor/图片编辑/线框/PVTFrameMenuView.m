@@ -80,8 +80,6 @@
     [shapeBtn setTitleColor:RedColor forState:UIControlStateSelected];
     [shapeBtn setTitleColor:HexColor(0x515151) forState:UIControlStateNormal];
     [shapeBtn addTarget:self action:@selector(changeFrameShape:) forControlEvents:UIControlEventTouchUpInside];
-//    shapeBtn.selectedTintColor = RedColor;
-//    shapeBtn.deSelectedTintColor = colorWithRGB(0x515151);
     
     UIButton *colorBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 69, 44, 40)];
     [colorBtn setImage:[[UIImage imageNamed:@"xiankuang_yanse_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
@@ -90,8 +88,6 @@
     [colorBtn addTarget:self action:@selector(changeFrameColor:) forControlEvents:UIControlEventTouchUpInside];
     [colorBtn setTitleColor:RedColor forState:UIControlStateSelected];
     [colorBtn setTitleColor:HexColor(0x515151) forState:UIControlStateNormal];
-//    colorBtn.selectedTintColor = RedColor;
-//    colorBtn.deSelectedTintColor = colorWithRGB(0x515151);
     
     UIButton *widthBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 69, 44, 40)];
     [widthBtn setImage:[[UIImage imageNamed:@"xiankuang_cuxi_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
@@ -100,8 +96,6 @@
     [widthBtn addTarget:self action:@selector(changeFrameLineWidth:) forControlEvents:UIControlEventTouchUpInside];
     [widthBtn setTitleColor:RedColor forState:UIControlStateSelected];
     [widthBtn setTitleColor:HexColor(0x515151) forState:UIControlStateNormal];
-//    widthBtn.selectedTintColor = RedColor;
-//    widthBtn.deSelectedTintColor = colorWithRGB(0x515151);
     widthBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
     _items = @[shapeBtn, colorBtn, widthBtn];
     self.items = _items;
@@ -236,8 +230,7 @@
         [cell.contentView addSubview:btn];
         [btn setImage:[[UIImage imageNamed:imageNames[indexPath.row]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
         [btn setTitle:titles[indexPath.row] forState:UIControlStateNormal];
-//        [btn setSelectedTintColor:RedColor];
-//        [btn setDeSelectedTintColor:colorWithRGB(0x515151)];
+        
         [cell setSelectedCallBack:^(BOOL selected){
             btn.selected = selected;
         }];
