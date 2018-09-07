@@ -81,7 +81,22 @@
 #pragma mark - setter & getter
 - (void)setItems:(NSArray<UIButton *> *)items
 {
+    if (_items) return;
     _items = items.mutableCopy;
+    for (UIButton *item in items) {
+        [item removeFromSuperview];
+        item.titleLabel.textAlignment = NSTextAlignmentCenter;
+        item.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+        
+        NSInteger count = items.count;
+        CGFloat gap = (self.width - 20*2 - count*40)/(count+1);
+        for (NSInteger i = 0; i < count; i++) {
+            UIButton *item = items[i];
+            item.origin = CGPointMake(20+gap+(40+gap)*i, 79);
+        }
+        
+        [self addSubview:item];
+    }
 }
 
 - (UILabel *)lbTitle

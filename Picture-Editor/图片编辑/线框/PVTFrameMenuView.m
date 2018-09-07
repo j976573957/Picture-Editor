@@ -16,6 +16,7 @@
     UICollectionView *frameTypeCollectionView;
     UICollectionView *frameColorCollectionView;
     UICollectionView *frameLineWidthCollectionView;
+    NSArray *_items;
 }
 
 - (instancetype)init
@@ -23,7 +24,7 @@
     self = [super initWithTitle:nil];
     if (self) {
         self.height = 70+49;
-        [self items];
+        [self setItems:[self items]];
         frameStyle = [[PVTFrameStyle alloc] init];
         frameStyle.frameType = PVTFrameTypeRect;
         frameStyle.color = [UIColor redColor];
@@ -72,7 +73,7 @@
 }
 
 - (NSArray *)items {
-    UIButton *shapeBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 69, 40, 40)];
+    UIButton *shapeBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 69, 44, 40)];
     [shapeBtn setImage:[[UIImage imageNamed:@"xiankuang_zhijiao_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [shapeBtn setTitle:@"形状" forState:UIControlStateNormal];
     shapeBtn.titleLabel.font = [UIFont systemFontOfSize:9];
@@ -82,7 +83,7 @@
 //    shapeBtn.selectedTintColor = RedColor;
 //    shapeBtn.deSelectedTintColor = colorWithRGB(0x515151);
     
-    UIButton *colorBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 69, 40, 40)];
+    UIButton *colorBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 69, 44, 40)];
     [colorBtn setImage:[[UIImage imageNamed:@"xiankuang_yanse_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [colorBtn setTitle:@"颜色" forState:UIControlStateNormal];
     colorBtn.titleLabel.font = [UIFont systemFontOfSize:9];
@@ -92,7 +93,7 @@
 //    colorBtn.selectedTintColor = RedColor;
 //    colorBtn.deSelectedTintColor = colorWithRGB(0x515151);
     
-    UIButton *widthBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 69, 40, 40)];
+    UIButton *widthBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 69, 44, 40)];
     [widthBtn setImage:[[UIImage imageNamed:@"xiankuang_cuxi_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [widthBtn setTitle:@"粗细" forState:UIControlStateNormal];
     widthBtn.titleLabel.font = [UIFont systemFontOfSize:9];
@@ -102,8 +103,9 @@
 //    widthBtn.selectedTintColor = RedColor;
 //    widthBtn.deSelectedTintColor = colorWithRGB(0x515151);
     widthBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    self.items = @[shapeBtn, colorBtn, widthBtn];
-    return @[shapeBtn, colorBtn, widthBtn];
+    _items = @[shapeBtn, colorBtn, widthBtn];
+    self.items = _items;
+    return _items;
 }
 
 - (void)changeFrameShape:(UIButton *)sender {
