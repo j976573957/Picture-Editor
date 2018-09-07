@@ -1,0 +1,37 @@
+//
+//  PVTEditor.pch
+//  Picture-Editor
+//
+//  Created by Mac on 2018/8/15.
+//  Copyright © 2018年 Mac. All rights reserved.
+//
+
+#ifndef PVTEditor_pch
+#define PVTEditor_pch
+
+
+
+#define ScreenWidth [UIScreen mainScreen].bounds.size.width
+#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+
+#define iPhone4 ([UIScreen mainScreen].bounds.size.height < 568.)
+#define iPhone5 ([UIScreen mainScreen].bounds.size.height == 568.)
+#define iPhone6 ([UIScreen mainScreen].bounds.size.height == 667.)
+#define iPhone6p ([UIScreen mainScreen].bounds.size.height == 736.)
+#define iPhoneX ([UIScreen mainScreen].bounds.size.height == 812.)
+
+#define safaAreaBottom (iPhoneX ? -34 : 0)
+#define iPhoneXTop (iPhoneX ? 88 : 64)
+
+//Hex 颜色
+#define HexColor(color) [UIColor colorWithRed:((color&0xff0000)>>16)/255. green:((color&0xff00)>>8)/255. blue:(color&0xff)/255. alpha:1]
+#define RedColor HexColor(0xFF5454)
+#define BlackColor HexColor(0x313131)
+
+#import "UIView_extra.h"
+#import <Masonry.h>
+#import <SVProgressHUD.h>
+#import "UIView_extra.h"
+
+
+#endif /* PVTEditor_pch */

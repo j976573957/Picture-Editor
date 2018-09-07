@@ -1,0 +1,28 @@
+PODS:
+  - GPUImage (0.1.7)
+  - Masonry (1.1.0)
+  - SVProgressHUD (2.2.5)
+  - TOCropViewController (2.3.6)
+
+DEPENDENCIES:
+  - GPUImage
+  - Masonry
+  - SVProgressHUD
+  - TOCropViewController
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - GPUImage
+    - Masonry
+    - SVProgressHUD
+    - TOCropViewController
+
+SPEC CHECKSUMS:
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  TOCropViewController: 6d972f2c609372312648f96758e13a7f689efbc0
+
+PODFILE CHECKSUM: 2b02929f997940a4b780fc3637700283e5e47cbe
+
+COCOAPODS: 1.5.3
