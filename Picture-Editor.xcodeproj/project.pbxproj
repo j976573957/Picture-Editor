@@ -10,6 +10,7 @@
 		0448E9A9211923470030C8E4 /* PVTSelectPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0448E9A8211923470030C8E4 /* PVTSelectPictureViewController.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		044A111D2123AD9400850DBB /* PVTToolsBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A111C2123AD9400850DBB /* PVTToolsBaseView.m */; };
 		044A117D21240DCA00850DBB /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A117B21240DCA00850DBB /* UIView_extra.m */; };
+		04544D84214746CE008DE38B /* PVTBaseElementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04544D83214746CE008DE38B /* PVTBaseElementView.m */; };
 		0460F3A12140BA14005F2105 /* UIColor+WTHexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460F3A02140BA14005F2105 /* UIColor+WTHexColor.m */; };
 		0461DDF3212A52CA00B072C0 /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461DDF2212A52CA00B072C0 /* GPUImageBeautifyFilter.m */; };
 		046533B82121428F004AB327 /* PVTFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 046533B72121428F004AB327 /* PVTFilter.m */; };
@@ -59,6 +60,8 @@
 		044A111E2123B09800850DBB /* PVTEditor.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTEditor.pch; sourceTree = "<group>"; };
 		044A117B21240DCA00850DBB /* UIView_extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIView_extra.m; sourceTree = "<group>"; };
 		044A117C21240DCA00850DBB /* UIView_extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIView_extra.h; sourceTree = "<group>"; };
+		04544D82214746CE008DE38B /* PVTBaseElementView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTBaseElementView.h; sourceTree = "<group>"; };
+		04544D83214746CE008DE38B /* PVTBaseElementView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTBaseElementView.m; sourceTree = "<group>"; };
 		0460F39F2140BA13005F2105 /* UIColor+WTHexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+WTHexColor.h"; sourceTree = "<group>"; };
 		0460F3A02140BA14005F2105 /* UIColor+WTHexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+WTHexColor.m"; sourceTree = "<group>"; };
 		0461DDF1212A52C900B072C0 /* GPUImageBeautifyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautifyFilter.h; sourceTree = "<group>"; };
@@ -139,6 +142,19 @@
 				0448E9A8211923470030C8E4 /* PVTSelectPictureViewController.m */,
 			);
 			path = "图片选择";
+			sourceTree = "<group>";
+		};
+		04544D812147460F008DE38B /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				044A111B2123AD9400850DBB /* PVTToolsBaseView.h */,
+				044A111C2123AD9400850DBB /* PVTToolsBaseView.m */,
+				0468B461213D2B18002D4979 /* PVTBaseStyle.h */,
+				0468B462213D2B18002D4979 /* PVTBaseStyle.m */,
+				04544D82214746CE008DE38B /* PVTBaseElementView.h */,
+				04544D83214746CE008DE38B /* PVTBaseElementView.m */,
+			);
+			path = BaseView;
 			sourceTree = "<group>";
 		};
 		046757C3212F8CE300D185F2 /* 裁剪 */ = {
@@ -257,15 +273,12 @@
 		04DEFDDB211C122500C3E24D /* 图片编辑 */ = {
 			isa = PBXGroup;
 			children = (
+				04544D812147460F008DE38B /* BaseView */,
 				046757C3212F8CE300D185F2 /* 裁剪 */,
 				046931FF21266A3400C974BE /* 滤镜 */,
 				0468B45D213D1FF6002D4979 /* 线框 */,
 				04DEFDDC211C124F00C3E24D /* PVTEditorViewController.h */,
 				04DEFDDD211C124F00C3E24D /* PVTEditorViewController.m */,
-				044A111B2123AD9400850DBB /* PVTToolsBaseView.h */,
-				044A111C2123AD9400850DBB /* PVTToolsBaseView.m */,
-				0468B461213D2B18002D4979 /* PVTBaseStyle.h */,
-				0468B462213D2B18002D4979 /* PVTBaseStyle.m */,
 			);
 			path = "图片编辑";
 			sourceTree = "<group>";
@@ -476,6 +489,7 @@
 				0448E9A9211923470030C8E4 /* PVTSelectPictureViewController.m in Sources */,
 				044A111D2123AD9400850DBB /* PVTToolsBaseView.m in Sources */,
 				0466DF0B213E142E007ACC35 /* PVTEqualSpaceFlowLayout.m in Sources */,
+				04544D84214746CE008DE38B /* PVTBaseElementView.m in Sources */,
 				0468B45C213CC4DD002D4979 /* UIImage+PVTRotation.m in Sources */,
 				0468B466213D2B3F002D4979 /* PVTFrameStyle.m in Sources */,
 				047B91C32117D11300939BAB /* ViewController.m in Sources */,
