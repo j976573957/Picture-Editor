@@ -1,0 +1,35 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 15,
+          "height" : 14
+        },
+        "cap-insets" : {
+          "bottom" : 39,
+          "top" : 37,
+          "right" : 37,
+          "left" : 38
+        }
+      },
+      "idiom" : "universal",
+      "filename" : "gj_caijian_biankuang@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PVTBaseElementView : UIView <NSCoding>
+@interface PVTBaseElementView : UIView <UIGestureRecognizerDelegate, NSCoding>
 {
     @public
     UIView *_contentView;//内容
@@ -25,6 +25,16 @@
 @property (nonatomic) CGFloat initialScale;
 @property (nonatomic, weak) UIView *preView;//记录上一个可编辑的 view
 
-
++ (void)setActiveElementView:(PVTBaseElementView*)view;
+- (void)setAvtive:(BOOL)active;
+- (BOOL)isActive;
+- (void)setScale:(CGFloat)scale;
+- (void)setArg:(CGFloat)arg;
+- (BOOL)isEnabled:(UIView *)view;
+- (void)deleteBtnClicked:(UIButton *)btn;
+- (void)tapGestureEvent:(UITapGestureRecognizer *)tap;
+- (void)prepareToSaveStatus;
+- (void)saveStatus;
+- (void)restoreState:(id)x superView:(UIView *)superView;
 
 @end

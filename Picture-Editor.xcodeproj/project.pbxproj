@@ -32,6 +32,7 @@
 		047B91D82117D11400939BAB /* Picture_EditorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 047B91D72117D11400939BAB /* Picture_EditorTests.m */; };
 		047B91E32117D11400939BAB /* Picture_EditorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 047B91E22117D11400939BAB /* Picture_EditorUITests.m */; };
 		04DEFDDE211C124F00C3E24D /* PVTEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DEFDDD211C124F00C3E24D /* PVTEditorViewController.m */; };
+		04F504FB214A0440007BB893 /* PVTFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F504FA214A0440007BB893 /* PVTFrameView.m */; };
 		E36C4B2437F699912CB9C5A9 /* libPods-Picture-Editor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF52C0FB4AF93927E2B6D8FB /* libPods-Picture-Editor.a */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,8 @@
 		047B91E42117D11400939BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04DEFDDC211C124F00C3E24D /* PVTEditorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTEditorViewController.h; sourceTree = "<group>"; };
 		04DEFDDD211C124F00C3E24D /* PVTEditorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTEditorViewController.m; sourceTree = "<group>"; };
+		04F504F9214A0440007BB893 /* PVTFrameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTFrameView.h; sourceTree = "<group>"; };
+		04F504FA214A0440007BB893 /* PVTFrameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTFrameView.m; sourceTree = "<group>"; };
 		57FF25F79B2BE54ED9814EC9 /* Pods-Picture-Editor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Picture-Editor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Picture-Editor/Pods-Picture-Editor.debug.xcconfig"; sourceTree = "<group>"; };
 		617B203045934E535AFBF31B /* Pods-Picture-Editor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Picture-Editor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Picture-Editor/Pods-Picture-Editor.release.xcconfig"; sourceTree = "<group>"; };
 		EF52C0FB4AF93927E2B6D8FB /* libPods-Picture-Editor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Picture-Editor.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +178,8 @@
 				0468B45F213D2323002D4979 /* PVTFrameMenuView.m */,
 				0468B464213D2B3F002D4979 /* PVTFrameStyle.h */,
 				0468B465213D2B3F002D4979 /* PVTFrameStyle.m */,
+				04F504F9214A0440007BB893 /* PVTFrameView.h */,
+				04F504FA214A0440007BB893 /* PVTFrameView.m */,
 			);
 			path = "线框";
 			sourceTree = "<group>";
@@ -485,6 +490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				046932092126719400C974BE /* UICollectionViewCell+PVTExtra.m in Sources */,
+				04F504FB214A0440007BB893 /* PVTFrameView.m in Sources */,
 				046533B82121428F004AB327 /* PVTFilter.m in Sources */,
 				0448E9A9211923470030C8E4 /* PVTSelectPictureViewController.m in Sources */,
 				044A111D2123AD9400850DBB /* PVTToolsBaseView.m in Sources */,
