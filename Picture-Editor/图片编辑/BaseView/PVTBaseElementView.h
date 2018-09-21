@@ -26,7 +26,7 @@
 @property (nonatomic, weak) UIView *preView;//记录上一个可编辑的 view
 
 + (void)setActiveElementView:(PVTBaseElementView*)view;
-- (void)setAvtive:(BOOL)active;
+- (void)setActive:(BOOL)active;
 - (BOOL)isActive;
 - (void)setScale:(CGFloat)scale;
 - (void)setArg:(CGFloat)arg;

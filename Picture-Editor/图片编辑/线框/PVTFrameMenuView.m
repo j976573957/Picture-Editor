@@ -73,7 +73,8 @@
 }
 
 - (NSArray *)items {
-    UIButton *shapeBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 69, 44, 40)];
+    UIButton *shapeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    shapeBtn.frame = CGRectMake(0, 69, 44, 40);
     [shapeBtn setImage:[[UIImage imageNamed:@"xiankuang_zhijiao_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [shapeBtn setTitle:@"形状" forState:UIControlStateNormal];
     shapeBtn.titleLabel.font = [UIFont systemFontOfSize:9];
@@ -81,7 +82,8 @@
     [shapeBtn setTitleColor:HexColor(0x515151) forState:UIControlStateNormal];
     [shapeBtn addTarget:self action:@selector(changeFrameShape:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *colorBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 69, 44, 40)];
+    UIButton *colorBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    colorBtn.frame = CGRectMake(0, 69, 44, 40);
     [colorBtn setImage:[[UIImage imageNamed:@"xiankuang_yanse_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [colorBtn setTitle:@"颜色" forState:UIControlStateNormal];
     colorBtn.titleLabel.font = [UIFont systemFontOfSize:9];
@@ -89,7 +91,8 @@
     [colorBtn setTitleColor:RedColor forState:UIControlStateSelected];
     [colorBtn setTitleColor:HexColor(0x515151) forState:UIControlStateNormal];
     
-    UIButton *widthBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 69, 44, 40)];
+    UIButton *widthBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    widthBtn.frame = CGRectMake(0, 69, 44, 40);
     [widthBtn setImage:[[UIImage imageNamed:@"xiankuang_cuxi_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [widthBtn setTitle:@"粗细" forState:UIControlStateNormal];
     widthBtn.titleLabel.font = [UIFont systemFontOfSize:9];

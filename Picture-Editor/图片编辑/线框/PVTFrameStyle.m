@@ -21,6 +21,13 @@
     return self;
 }
 
-
+- (id)copyWithZone:(NSZone *)zone
+{
+    PVTFrameStyle *style = [self.class new];
+    style.frameType = self.frameType;
+    style.lineWidth = self.lineWidth;
+    style.color = self.color;
+    return style;
+}
 
 @end

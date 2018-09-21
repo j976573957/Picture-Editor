@@ -11,6 +11,7 @@
 #import "UIImage+PVTFilter.h"
 #import "PVTCropViewController.h"
 #import "PVTFrameMenuView.h"
+#import "PVTFrameView.h"
 
 @interface PVTEditorToolsCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lbTitle;
@@ -18,10 +19,11 @@
 
 @end
 
-@interface PVTEditorViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, TOCropViewControllerDelegate, PVTToolsBaseViewDelegate>
+@interface PVTEditorViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, TOCropViewControllerDelegate, PVTToolsBaseViewDelegate, UIGestureRecognizerDelegate>
 {
     NSArray *_toolTitles;
     UIView *_contentView;
+    NSMutableArray *_tempFrames;
     
 }
 
@@ -85,6 +87,16 @@
     }
 }
 
+#pragma mark - setter & getter
+- (void)setImageView:(UIImageView *)imageView
+{
+    _imageView = imageView;
+    _imageView.userInteractionEnabled = YES;
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    pan.delegate = self;
+    [_imageView addGestureRecognizer:pan];
+}
+
 #pragma mark - event
 - (void)showMenu:(UIView *)view
 {
@@ -138,6 +150,70 @@
 
 - (IBAction)done:(id)sender {
     
+}
+
+#pragma mark 手势
+- (void)handlePan:(UIPanGestureRecognizer *)pan
+{
+    if (self.editMode == PVTImageEditModeFrame) {
+        [self framePan:pan];
+    }else if (self.editMode == PVTImageEditModeArrow) {
+        [self arrowPan:pan];
+    }
+}
+
+- (void)framePan:(UIPanGestureRecognizer *)pan
+{
+    static CGPoint startPoint;
+    UIView *view = pan.view;
+    CGPoint point = [pan locationInView:view];
+    static PVTFrameView *frameView;
+    if (pan.state == UIGestureRecognizerStateBegan) {
+        [frameView prepareToSaveStatus];
+        [PVTBaseElementView setActiveElementView:nil];
+        startPoint = point;
+        frameView = [[PVTFrameView alloc] initWithFrame:CGRectMake(startPoint.x-15, startPoint.y, 30, 0)];
+        frameView.frameStyle = self.frameStyle;
+        frameView.startPoint = point;
+    }else if (pan.state == UIGestureRecognizerStateChanged) {
+        CGPoint newPoint = [pan translationInView:view];
+        CGFloat s = sqrt(newPoint.x * newPoint.x + newPoint.y * newPoint.y);
+        if (s > 30) {
+            CGRect frame = [self rectWithPoint:startPoint p2:point];
+            frameView.rect = frame;
+            if (!frameView.superview) {
+                [_imageView addSubview:frameView];
+                [_tempFrames addObject:frameView];
+            }
+        }
+    } else if (pan.state == UIGestureRecognizerStateCancelled) {
+        frameView = nil;
+        [frameView saveStatus];
+    } else if (pan.state == UIGestureRecognizerStateEnded) {
+        [PVTFrameView setActiveElementView:frameView];
+        frameView = nil;
+        [frameView saveStatus];
+    }
+}
+
+- (CGRect)rectWithPoint:(CGPoint)p1 p2:(CGPoint)p2
+{
+    CGFloat w = ABS(p2.x - p1.x);
+    CGFloat h = ABS(p2.y - p1.y);
+    return CGRectMake(MIN(p1.x, p2.x), MIN(p1.y, p2.y), w, h);
+}
+
+- (void)arrowPan:(UIPanGestureRecognizer *)pan
+{
+    
+}
+
+#pragma mark - UIGestureDelegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if (gestureRecognizer.view == _imageView && (_editMode == PVTImageEditModeArrow || _editMode == PVTImageEditModeFrame)) {
+        return YES;
+    }
+    return NO;
 }
 
 #pragma mark - UICollectionViewDataSource & UICollectionViewDelegate

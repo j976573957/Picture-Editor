@@ -37,6 +37,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
         [_btnTransition removeFromSuperview];
         //线框
         _drawingView = [[FrameDrawingView alloc] initWithFrame:_contentView.bounds];
@@ -76,14 +77,67 @@
     return self;
 }
 
-- (void)setAvtive:(BOOL)active
+#pragma mark - getter & setter
+
+- (void)setActive:(BOOL)active
 {
-    [super setAvtive:active];
+    [super setActive:active];
     if (active) {
         _lt.hidden = _rt.hidden = _lb.hidden = _rb.hidden = NO;
     }else{
         _lt.hidden = _rt.hidden = _lb.hidden = _rb.hidden = YES;
     }
+}
+
+- (void)setFrameStyle:(PVTFrameStyle *)frameStyle {
+    _frameStyle = frameStyle;
+    _drawingView.color = _frameStyle.color;
+    _drawingView.lineWidth = _frameStyle.lineWidth;
+    _drawingView.frameType = _frameStyle.frameType;
+}
+
+- (void)setStartPoint:(CGPoint)startPoint {
+    _startPoint = startPoint;
+    _drawingView.startPoint = startPoint;
+}
+
+- (void)setRect:(CGRect)rect
+{
+    rect.size.height = MAX(_frameStyle.lineWidth * 2, rect.size.height);
+    rect.size.width = MAX(_frameStyle.lineWidth * 2, rect.size.width);
+    _rect = rect;
+    self.frame = rect;
+    
+    //如果是画线，得调整一下角标的位置
+    [self adjustLineCornerPosition];
+    
+    _drawingView.size = rect.size;
+    _drawingView.center = CGPointMake(_rect.size.width/2., _rect.size.height/2.);
+    [_drawingView setNeedsDisplay];
+}
+
+//如果是画线，得调整一下角标的位置
+- (void)adjustLineCornerPosition
+{
+    if (_frameStyle.frameType != PVTFrameTypeLine) {
+        return;
+    }
+    CGFloat lineWidth = _frameStyle.lineWidth;
+    CGFloat x = lineWidth;
+    CGFloat y = lineWidth;
+    CGRect rect = [self convertRect:self.bounds toView:self.superview];
+    CGFloat w = rect.size.width - lineWidth;
+    CGFloat h = rect.size.height - lineWidth;
+    if (CGRectGetMaxX(rect) > _startPoint.x + lineWidth) {
+        x = w;
+        w = lineWidth;
+    }
+    if (CGRectGetMaxY(rect) > _startPoint.y + lineWidth) {
+        y = h;
+        h = lineWidth;
+    }
+    _rt.center = CGPointMake(x, y);
+    _lb.center = CGPointMake(w, h);
 }
 
 #pragma mark - 事件
@@ -151,6 +205,52 @@
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
+    CGFloat lineWidth = _lineWidth;
+    UIColor *color = _color;
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(ctx, lineWidth);
+    CGContextSetStrokeColorWithColor(ctx, color.CGColor);
+    CGContextSetFillColorWithColor(ctx, color.CGColor);
+    CGMutablePathRef path = CGPathCreateMutable();
+    if (_frameType == PVTFrameTypeEllipse) {
+        CGPathAddEllipseInRect(path, NULL, CGRectInset(rect, lineWidth * .5, lineWidth * .5));
+    }else if (_frameType == PVTFrameTypeRect) {
+        CGPathAddRect(path, NULL, CGRectInset(rect, lineWidth * .5, lineWidth * .5));
+    }else if (_frameType == PVTFrameTypeRoundRect) {
+        UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(rect, lineWidth * .5, lineWidth * .5) cornerRadius:0];
+        bezierPath.lineWidth = lineWidth;
+        bezierPath.lineCapStyle = kCGLineCapRound;
+        bezierPath.lineJoinStyle = kCGLineJoinRound;
+        CGPathAddPath(path, NULL, bezierPath.CGPath);
+    }else if (_frameType == PVTFrameTypeLine) {
+        CGFloat x = lineWidth;
+        CGFloat y = lineWidth;
+        rect = [self convertRect:rect toView:self.superview.superview];
+        CGFloat w = rect.size.width - lineWidth;
+        CGFloat h = rect.size.height - lineWidth;
+        NSLog(@"pre_rect = (%f, %f, %f, %f) ", x, y, w, h);
+        if (CGRectGetMaxX(rect) > (_startPoint.x + lineWidth)) {
+            x = w;
+            w = lineWidth;
+        }
+        if (CGRectGetMaxY(rect) > (_startPoint.y + lineWidth)) {
+            y = h;
+            h = lineWidth;
+        }
+        NSLog(@"_startPoint = (%f, %f) ", _startPoint.x, _startPoint.y);
+
+        CGPathMoveToPoint(path, NULL, x, y);
+        CGPathAddLineToPoint(path, NULL, w, h);
+        CGContextSetLineCap(ctx, kCGLineCapRound);
+        CGContextSetLineJoin(ctx, kCGLineJoinRound);
+    }else if (_frameType == PVTFrameTypeFillRect) {
+        CGPathAddRect(path, NULL, rect);
+        CGContextAddPath(ctx, path);
+        CGContextDrawPath(ctx, kCGPathFill);
+        return;
+    }
+    CGContextAddPath(ctx, path);
+    CGContextStrokePath(ctx);
 }
 
 @end

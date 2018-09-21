@@ -77,6 +77,33 @@
 - (void)deleteBtnClicked:(UIButton *)btn
 {
     [self prepareToSaveStatus];
+    
+    //设置下一个可编辑对象
+    //1.先遍历它上层的 view
+    PVTBaseElementView *nextTarget = nil;
+    NSInteger index = [self.superview.subviews indexOfObject:self];
+    for (NSInteger i = index + 1; i < self.superview.subviews.count; ++i) {
+        UIView *view = [self.superview.subviews objectAtIndex:i];
+        if ([view isKindOfClass:[PVTBaseElementView class]]) {
+            nextTarget = (PVTBaseElementView *)view;
+            break;
+        }
+    }
+    //2.如果没有，再遍历它下层的 view
+    if (nextTarget == nil) {
+        for(NSInteger i=index-1; i>=0; --i){
+            UIView *view = [self.superview.subviews objectAtIndex:i];
+            if([view isKindOfClass:[PVTBaseElementView class]]){
+                nextTarget = (PVTBaseElementView*)view;
+                break;
+            }
+        }
+    }
+    
+    //移除当前的可编辑的 view
+    [self setActive:NO];
+    [self removeFromSuperview];
+    [self saveStatus];
 }
 
 - (void)tapGestureEvent:(UITapGestureRecognizer *)tap
@@ -90,7 +117,12 @@
     
     CGPoint p = [pan translationInView:self.superview];
     if (pan.state == UIGestureRecognizerStateBegan) {
-        
+        [self prepareToSaveStatus];
+        _initialPoint = self.center;
+    }
+    self.center = CGPointMake(_initialPoint.x + p.x, _initialPoint.y + p.y);
+    if (pan.state == UIGestureRecognizerStateEnded) {
+        [self saveStatus];
     }
 }
 
@@ -104,11 +136,11 @@
     static PVTBaseElementView *activeView = nil;
     if ([view isKindOfClass:NSClassFromString(@"PVTTextView")]) {
         activeView = view;
-        [activeView setAvtive:YES];
+        [activeView setActive:YES];
     } else {
-        [activeView setAvtive:NO];
+        [activeView setActive:NO];
         activeView = view;
-        [activeView setAvtive:YES];
+        [activeView setActive:YES];
     }
     [activeView.superview bringSubviewToFront:activeView];
 }
