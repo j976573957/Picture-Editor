@@ -10,4 +10,9 @@
 
 @interface PVTBaseStyle : NSObject
 
+@property (nonatomic, strong) UIImage *icon;
+@property (nonatomic, copy) NSString *name;
+
++ (NSArray <PVTBaseStyle*>*)defaultStyles;
+
 @end

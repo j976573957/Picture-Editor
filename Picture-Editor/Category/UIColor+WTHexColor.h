@@ -10,7 +10,7 @@
 
 @interface UIColor (WTHexColor)
 
-+ (UIColor *) colorWithHexString: (NSString *) stringToConvert;
++ (UIColor *)colorWithHexString: (NSString *) stringToConvert;
 
 + (NSArray *)availableColors;
 

@@ -9,7 +9,7 @@
 #import "UIColor+WTHexColor.h"
 
 @implementation UIColor (WTHexColor)
-+ (UIColor *) colorWithHexString: (NSString *) stringToConvert
++ (UIColor *)colorWithHexString: (NSString *) stringToConvert
 {
     NSString *cString = [[stringToConvert stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];//字符串处理
     //例子，stringToConvert #ffffff

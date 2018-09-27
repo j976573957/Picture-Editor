@@ -94,7 +94,7 @@
                     collectionView.allowsMultipleSelection = YES;
                 }
             });
-
+            
         }
     }];
     

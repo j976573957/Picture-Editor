@@ -10,4 +10,8 @@
 
 @implementation PVTBaseStyle
 
++ (NSArray <PVTBaseStyle*>*)defaultStyles {
+    return nil;
+}
+
 @end

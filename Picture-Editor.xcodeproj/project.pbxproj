@@ -7,10 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0445ADD5215B0E4C0078B6E6 /* PVTArrowStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0445ADD4215B0E4C0078B6E6 /* PVTArrowStyle.m */; };
 		0448E9A9211923470030C8E4 /* PVTSelectPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0448E9A8211923470030C8E4 /* PVTSelectPictureViewController.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		044A111D2123AD9400850DBB /* PVTToolsBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A111C2123AD9400850DBB /* PVTToolsBaseView.m */; };
 		044A117D21240DCA00850DBB /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A117B21240DCA00850DBB /* UIView_extra.m */; };
+		044A430C215C6F0A00316B3C /* gj_sanjiao_2@2x.svg in Resources */ = {isa = PBXBuildFile; fileRef = 044A4307215C6F0A00316B3C /* gj_sanjiao_2@2x.svg */; };
+		044A430D215C6F0A00316B3C /* gj_sanjiao_4@2x.svg in Resources */ = {isa = PBXBuildFile; fileRef = 044A4308215C6F0A00316B3C /* gj_sanjiao_4@2x.svg */; };
+		044A4314215C6F4100316B3C /* gj_sanjiao_5@2x.svg in Resources */ = {isa = PBXBuildFile; fileRef = 044A4311215C6F4100316B3C /* gj_sanjiao_5@2x.svg */; };
+		044A4315215C6F4100316B3C /* gj_sanjiao_3@2x.svg in Resources */ = {isa = PBXBuildFile; fileRef = 044A4312215C6F4100316B3C /* gj_sanjiao_3@2x.svg */; };
+		044A4316215C6F4100316B3C /* gj_sanjiao_1@2x.svg in Resources */ = {isa = PBXBuildFile; fileRef = 044A4313215C6F4100316B3C /* gj_sanjiao_1@2x.svg */; };
 		04544D84214746CE008DE38B /* PVTBaseElementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04544D83214746CE008DE38B /* PVTBaseElementView.m */; };
+		045BDCF3215B14EE00C350C4 /* ArrowStyle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 045BDCF2215B14EE00C350C4 /* ArrowStyle.plist */; };
 		0460F3A12140BA14005F2105 /* UIColor+WTHexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460F3A02140BA14005F2105 /* UIColor+WTHexColor.m */; };
 		0461DDF3212A52CA00B072C0 /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461DDF2212A52CA00B072C0 /* GPUImageBeautifyFilter.m */; };
 		046533B82121428F004AB327 /* PVTFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 046533B72121428F004AB327 /* PVTFilter.m */; };
@@ -31,6 +38,7 @@
 		047B91CE2117D11400939BAB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 047B91CD2117D11400939BAB /* main.m */; };
 		047B91D82117D11400939BAB /* Picture_EditorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 047B91D72117D11400939BAB /* Picture_EditorTests.m */; };
 		047B91E32117D11400939BAB /* Picture_EditorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 047B91E22117D11400939BAB /* Picture_EditorUITests.m */; };
+		04802D8C2159BFC6003CEE74 /* PVTArrowMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04802D8B2159BFC6003CEE74 /* PVTArrowMenuView.m */; };
 		04DEFDDE211C124F00C3E24D /* PVTEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DEFDDD211C124F00C3E24D /* PVTEditorViewController.m */; };
 		04F504FB214A0440007BB893 /* PVTFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F504FA214A0440007BB893 /* PVTFrameView.m */; };
 		E36C4B2437F699912CB9C5A9 /* libPods-Picture-Editor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF52C0FB4AF93927E2B6D8FB /* libPods-Picture-Editor.a */; };
@@ -54,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0445ADD3215B0E4C0078B6E6 /* PVTArrowStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTArrowStyle.h; sourceTree = "<group>"; };
+		0445ADD4215B0E4C0078B6E6 /* PVTArrowStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTArrowStyle.m; sourceTree = "<group>"; };
 		0448E9A7211923470030C8E4 /* PVTSelectPictureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTSelectPictureViewController.h; sourceTree = "<group>"; };
 		0448E9A8211923470030C8E4 /* PVTSelectPictureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTSelectPictureViewController.m; sourceTree = "<group>"; };
 		044A111B2123AD9400850DBB /* PVTToolsBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTToolsBaseView.h; sourceTree = "<group>"; };
@@ -61,8 +71,14 @@
 		044A111E2123B09800850DBB /* PVTEditor.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTEditor.pch; sourceTree = "<group>"; };
 		044A117B21240DCA00850DBB /* UIView_extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIView_extra.m; sourceTree = "<group>"; };
 		044A117C21240DCA00850DBB /* UIView_extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIView_extra.h; sourceTree = "<group>"; };
+		044A4307215C6F0A00316B3C /* gj_sanjiao_2@2x.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "gj_sanjiao_2@2x.svg"; sourceTree = "<group>"; };
+		044A4308215C6F0A00316B3C /* gj_sanjiao_4@2x.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "gj_sanjiao_4@2x.svg"; sourceTree = "<group>"; };
+		044A4311215C6F4100316B3C /* gj_sanjiao_5@2x.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "gj_sanjiao_5@2x.svg"; sourceTree = "<group>"; };
+		044A4312215C6F4100316B3C /* gj_sanjiao_3@2x.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "gj_sanjiao_3@2x.svg"; sourceTree = "<group>"; };
+		044A4313215C6F4100316B3C /* gj_sanjiao_1@2x.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "gj_sanjiao_1@2x.svg"; sourceTree = "<group>"; };
 		04544D82214746CE008DE38B /* PVTBaseElementView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTBaseElementView.h; sourceTree = "<group>"; };
 		04544D83214746CE008DE38B /* PVTBaseElementView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTBaseElementView.m; sourceTree = "<group>"; };
+		045BDCF2215B14EE00C350C4 /* ArrowStyle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ArrowStyle.plist; sourceTree = "<group>"; };
 		0460F39F2140BA13005F2105 /* UIColor+WTHexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+WTHexColor.h"; sourceTree = "<group>"; };
 		0460F3A02140BA14005F2105 /* UIColor+WTHexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+WTHexColor.m"; sourceTree = "<group>"; };
 		0461DDF1212A52C900B072C0 /* GPUImageBeautifyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautifyFilter.h; sourceTree = "<group>"; };
@@ -103,6 +119,8 @@
 		047B91DE2117D11400939BAB /* Picture-EditorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Picture-EditorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		047B91E22117D11400939BAB /* Picture_EditorUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Picture_EditorUITests.m; sourceTree = "<group>"; };
 		047B91E42117D11400939BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04802D8A2159BFC6003CEE74 /* PVTArrowMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTArrowMenuView.h; sourceTree = "<group>"; };
+		04802D8B2159BFC6003CEE74 /* PVTArrowMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTArrowMenuView.m; sourceTree = "<group>"; };
 		04DEFDDC211C124F00C3E24D /* PVTEditorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTEditorViewController.h; sourceTree = "<group>"; };
 		04DEFDDD211C124F00C3E24D /* PVTEditorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTEditorViewController.m; sourceTree = "<group>"; };
 		04F504F9214A0440007BB893 /* PVTFrameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTFrameView.h; sourceTree = "<group>"; };
@@ -145,6 +163,35 @@
 				0448E9A8211923470030C8E4 /* PVTSelectPictureViewController.m */,
 			);
 			path = "图片选择";
+			sourceTree = "<group>";
+		};
+		044A3D5B215C605B00316B3C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				044A3D5C215C605B00316B3C /* Svgs */,
+			);
+			name = Resources;
+			path = "Picture-Editor/Resources";
+			sourceTree = "<group>";
+		};
+		044A3D5C215C605B00316B3C /* Svgs */ = {
+			isa = PBXGroup;
+			children = (
+				044A4306215C6EFA00316B3C /* Arrows */,
+			);
+			path = Svgs;
+			sourceTree = "<group>";
+		};
+		044A4306215C6EFA00316B3C /* Arrows */ = {
+			isa = PBXGroup;
+			children = (
+				044A4313215C6F4100316B3C /* gj_sanjiao_1@2x.svg */,
+				044A4312215C6F4100316B3C /* gj_sanjiao_3@2x.svg */,
+				044A4311215C6F4100316B3C /* gj_sanjiao_5@2x.svg */,
+				044A4307215C6F0A00316B3C /* gj_sanjiao_2@2x.svg */,
+				044A4308215C6F0A00316B3C /* gj_sanjiao_4@2x.svg */,
+			);
+			path = Arrows;
 			sourceTree = "<group>";
 		};
 		04544D812147460F008DE38B /* BaseView */ = {
@@ -217,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				047B91BD2117D11300939BAB /* Picture-Editor */,
+				044A3D5B215C605B00316B3C /* Resources */,
 				047B91D62117D11400939BAB /* Picture-EditorTests */,
 				047B91E12117D11400939BAB /* Picture-EditorUITests */,
 				047B91BC2117D11300939BAB /* Products */,
@@ -275,6 +323,18 @@
 			path = "Picture-EditorUITests";
 			sourceTree = "<group>";
 		};
+		04802D892159BF81003CEE74 /* 箭头 */ = {
+			isa = PBXGroup;
+			children = (
+				04802D8A2159BFC6003CEE74 /* PVTArrowMenuView.h */,
+				04802D8B2159BFC6003CEE74 /* PVTArrowMenuView.m */,
+				0445ADD3215B0E4C0078B6E6 /* PVTArrowStyle.h */,
+				0445ADD4215B0E4C0078B6E6 /* PVTArrowStyle.m */,
+				045BDCF2215B14EE00C350C4 /* ArrowStyle.plist */,
+			);
+			path = "箭头";
+			sourceTree = "<group>";
+		};
 		04DEFDDB211C122500C3E24D /* 图片编辑 */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +342,7 @@
 				046757C3212F8CE300D185F2 /* 裁剪 */,
 				046931FF21266A3400C974BE /* 滤镜 */,
 				0468B45D213D1FF6002D4979 /* 线框 */,
+				04802D892159BF81003CEE74 /* 箭头 */,
 				04DEFDDC211C124F00C3E24D /* PVTEditorViewController.h */,
 				04DEFDDD211C124F00C3E24D /* PVTEditorViewController.m */,
 			);
@@ -393,6 +454,23 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				ar,
+				"zh-Hans",
+				ja,
+				es,
+				da,
+				it,
+				ko,
+				"zh-Hant",
+				tr,
+				pl,
+				vi,
+				ru,
+				fr,
+				id,
+				nl,
+				pt,
 			);
 			mainGroup = 047B91B22117D11300939BAB;
 			productRefGroup = 047B91BC2117D11300939BAB /* Products */;
@@ -412,8 +490,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				047B91CB2117D11400939BAB /* LaunchScreen.storyboard in Resources */,
+				044A430C215C6F0A00316B3C /* gj_sanjiao_2@2x.svg in Resources */,
+				044A4315215C6F4100316B3C /* gj_sanjiao_3@2x.svg in Resources */,
 				047B91C82117D11400939BAB /* Assets.xcassets in Resources */,
+				044A4316215C6F4100316B3C /* gj_sanjiao_1@2x.svg in Resources */,
+				045BDCF3215B14EE00C350C4 /* ArrowStyle.plist in Resources */,
+				044A4314215C6F4100316B3C /* gj_sanjiao_5@2x.svg in Resources */,
 				047B91C62117D11300939BAB /* Main.storyboard in Resources */,
+				044A430D215C6F0A00316B3C /* gj_sanjiao_4@2x.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,7 +579,9 @@
 				0448E9A9211923470030C8E4 /* PVTSelectPictureViewController.m in Sources */,
 				044A111D2123AD9400850DBB /* PVTToolsBaseView.m in Sources */,
 				0466DF0B213E142E007ACC35 /* PVTEqualSpaceFlowLayout.m in Sources */,
+				04802D8C2159BFC6003CEE74 /* PVTArrowMenuView.m in Sources */,
 				04544D84214746CE008DE38B /* PVTBaseElementView.m in Sources */,
+				0445ADD5215B0E4C0078B6E6 /* PVTArrowStyle.m in Sources */,
 				0468B45C213CC4DD002D4979 /* UIImage+PVTRotation.m in Sources */,
 				0468B466213D2B3F002D4979 /* PVTFrameStyle.m in Sources */,
 				047B91C32117D11300939BAB /* ViewController.m in Sources */,
@@ -682,6 +768,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ECC3GC45A4;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Picture-Editor/Resources/Svgs/wetool/Mine(我的)/Common(通用)/Lib",
+				);
 				GCC_PREFIX_HEADER = "Picture-Editor/PVTEditor.pch";
 				INFOPLIST_FILE = "Picture-Editor/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -703,6 +793,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ECC3GC45A4;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Picture-Editor/Resources/Svgs/wetool/Mine(我的)/Common(通用)/Lib",
+				);
 				GCC_PREFIX_HEADER = "Picture-Editor/PVTEditor.pch";
 				INFOPLIST_FILE = "Picture-Editor/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

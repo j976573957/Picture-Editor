@@ -12,6 +12,7 @@
 #import "PVTCropViewController.h"
 #import "PVTFrameMenuView.h"
 #import "PVTFrameView.h"
+#import "PVTArrowMenuView.h"
 
 @interface PVTEditorToolsCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lbTitle;
@@ -32,6 +33,8 @@
 @property (nonatomic, strong) PVTFilterMenuView *filterMenu;
 @property (strong, nonatomic) PVTFrameMenuView *frameMenu;
 @property (nonatomic, strong) PVTFrameStyle *frameStyle;
+@property (strong, nonatomic) PVTArrowMenuView *arrowMenu;
+@property (assign, nonatomic) PVTArrowStyle *arrowStyle;
 @property (weak, nonatomic) UIView *currMenuView;
 
 @end
@@ -52,7 +55,7 @@
 #pragma mark - init
 - (void)initMainMenu
 {
-    _toolTitles = @[@"滤镜", @"编辑",@"线框"];
+    _toolTitles = @[@"滤镜", @"编辑" ,@"线框" ,@"箭头"];
     NSMutableArray *subMenuViews = [NSMutableArray array];
     
     __weak typeof(self) weakSelf = self;
@@ -75,7 +78,15 @@
     }];
     self.frameStyle = self.frameMenu->frameStyle;
     
+    //箭头
+    self.arrowMenu = [PVTArrowMenuView new];
+    [self.arrowMenu setPreferredStyle:^(PVTArrowStyle *preferredStyle){
+        weakSelf.arrowStyle = preferredStyle;
+    }];
+    self.arrowStyle = self.arrowMenu->arrowStyle;
+    [subMenuViews addObject:self.arrowMenu];
     
+    //
     for (PVTToolsBaseView *view in subMenuViews) {
         view.delegate = self;
         if (ScreenHeight == 812) {
@@ -114,6 +125,8 @@
             self.filterMenu.image = self.image;
         } else if (view == _frameMenu) {
             self.editMode = PVTImageEditModeFrame;
+        } else if (view == _arrowMenu) {
+            self.editMode = PVTImageEditModeArrow;
         }
     }
     
@@ -242,6 +255,8 @@
         [self presentViewController:vc animated:YES completion:nil];
     }else if (indexPath.row == 2){
         [self showMenu:self.frameMenu];
+    } else if (indexPath.row == 3) {
+        [self showMenu:self.arrowMenu];
     }
 }
 
