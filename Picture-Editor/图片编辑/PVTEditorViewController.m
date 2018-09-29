@@ -13,6 +13,7 @@
 #import "PVTFrameMenuView.h"
 #import "PVTFrameView.h"
 #import "PVTArrowMenuView.h"
+#import "PVTArrowView.h"
 
 @interface PVTEditorToolsCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lbTitle;
@@ -25,6 +26,7 @@
     NSArray *_toolTitles;
     UIView *_contentView;
     NSMutableArray *_tempFrames;
+    NSMutableArray *_tempArrows;
     
 }
 
@@ -218,7 +220,49 @@
 
 - (void)arrowPan:(UIPanGestureRecognizer *)pan
 {
-    
+    static CGPoint startPoint;
+    static PVTArrowView *arrowView;
+    UIView *view = pan.view;
+    CGPoint point = [pan locationInView:view];
+    if (pan.state == UIGestureRecognizerStateBegan) {
+        [arrowView prepareToSaveStatus];
+        [PVTBaseElementView setActiveElementView:arrowView];
+        startPoint = point;
+        arrowView = [[PVTArrowView alloc] initWithFrame:CGRectMake(startPoint.x-15, startPoint.y, 30, 0)];
+        arrowView.arrowStyle = self.arrowStyle;
+    } else if (pan.state == UIGestureRecognizerStateChanged) {
+        CGPoint t = [pan translationInView:view];
+        CGFloat s = sqrt((t.x*t.x+t.y*t.y));
+        if (s > 30) {
+            arrowView.h = s;
+            CGFloat angle = 0;
+            angle = atan((point.y-startPoint.y)/(point.x-startPoint.x));
+            if (point.x > startPoint.x && point.y > startPoint.y) {
+                angle = angle - M_PI_2;
+                arrowView.angle = angle;
+            } else if (point.x > startPoint.x && point.y < startPoint.y) {
+                angle = angle + M_PI_2 * 3;
+                arrowView.angle = angle;
+            } else if (point.x < startPoint.x && point.y < startPoint.y) {
+                angle = angle - M_PI_2 * 3;
+                arrowView.angle = angle;
+            } else if (point.x < startPoint.x && point.y > startPoint.y) {
+                angle = angle + M_PI_2;
+                arrowView.angle = angle;
+            }
+            if (!arrowView.superview) {
+                [_imageView addSubview:arrowView];
+                [_tempArrows addObject:arrowView];
+            }
+        }
+        
+    } else if (pan.state == UIGestureRecognizerStateCancelled) {
+        arrowView = nil;
+        [arrowView saveStatus];
+    } else if (pan.state == UIGestureRecognizerStateEnded) {
+        arrowView = nil;
+        [arrowView saveStatus];
+    }
 }
 
 #pragma mark - UIGestureDelegate

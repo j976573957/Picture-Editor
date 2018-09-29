@@ -63,7 +63,7 @@
     [self addChildViewController:_cropVC];
     _cropVC.delegate = self.delegate;
     _cropView = _cropVC.cropView;
-    [_cropView performInitialSetup];
+    [_cropVC.cropView performInitialSetup];
     [contentView addSubview:_cropView];
 }
 

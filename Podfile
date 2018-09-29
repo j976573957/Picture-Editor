@@ -8,6 +8,5 @@ inhibit_all_warnings!
 pod 'GPUImage'
 pod 'Masonry'
 pod 'SVProgressHUD'
-pod 'TOCropViewController'
 
 end

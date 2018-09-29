@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TOCropViewController.h>
+#import "TOCropViewController.h"
 
 @interface PVTCropViewController : UIViewController
 
