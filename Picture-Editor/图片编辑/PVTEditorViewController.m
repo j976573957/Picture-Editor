@@ -14,6 +14,8 @@
 #import "PVTFrameView.h"
 #import "PVTArrowMenuView.h"
 #import "PVTArrowView.h"
+#import "PVTStickerView.h"
+#import "PVTStickerMenuView.h"
 
 @interface PVTEditorToolsCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lbTitle;
@@ -27,17 +29,18 @@
     UIView *_contentView;
     NSMutableArray *_tempFrames;
     NSMutableArray *_tempArrows;
-    
+    NSMutableArray *_tempStickers;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *toolCollectionView;
+@property (weak, nonatomic) UIView *currMenuView;
 @property (nonatomic, assign) PVTImageEditMode editMode;
 @property (nonatomic, strong) PVTFilterMenuView *filterMenu;
 @property (strong, nonatomic) PVTFrameMenuView *frameMenu;
 @property (nonatomic, strong) PVTFrameStyle *frameStyle;
 @property (strong, nonatomic) PVTArrowMenuView *arrowMenu;
 @property (assign, nonatomic) PVTArrowStyle *arrowStyle;
-@property (weak, nonatomic) UIView *currMenuView;
+@property (strong, nonatomic) PVTStickerMenuView *stickerMenu;
 
 @end
 
@@ -57,7 +60,7 @@
 #pragma mark - init
 - (void)initMainMenu
 {
-    _toolTitles = @[@"滤镜", @"编辑" ,@"线框" ,@"箭头"];
+    _toolTitles = @[@"滤镜", @"编辑" ,@"线框" ,@"箭头" ,@"贴图"];
     NSMutableArray *subMenuViews = [NSMutableArray array];
     
     __weak typeof(self) weakSelf = self;
@@ -87,6 +90,12 @@
     }];
     self.arrowStyle = self.arrowMenu->arrowStyle;
     [subMenuViews addObject:self.arrowMenu];
+    
+    //贴图
+    self.stickerMenu = [PVTStickerMenuView new];
+    [self.stickerMenu setPreferredStyle:^(PVTStickerStyle *preferredStyle) {
+        [weakSelf addNewSticker:preferredStyle];
+    }];
     
     //
     for (PVTToolsBaseView *view in subMenuViews) {
@@ -129,6 +138,8 @@
             self.editMode = PVTImageEditModeFrame;
         } else if (view == _arrowMenu) {
             self.editMode = PVTImageEditModeArrow;
+        }else if (view == _stickerMenu) {
+            self.editMode = PVTImageEditModeSticker;
         }
     }
     
@@ -265,6 +276,16 @@
     }
 }
 
+/** 增加贴图 */
+- (void)addNewSticker:(PVTStickerStyle *)stickerStyle {
+    PVTStickerView *sticker = [[PVTStickerView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    sticker.stickerStyle = stickerStyle;
+    sticker.center = CGPointMake(_imageView.width/2., _imageView.height/2.);
+    [_imageView addSubview:sticker];
+    [_tempStickers addObject:sticker];
+    [PVTBaseElementView setActiveElementView:sticker];
+}
+
 #pragma mark - UIGestureDelegate
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     if (gestureRecognizer.view == _imageView && (_editMode == PVTImageEditModeArrow || _editMode == PVTImageEditModeFrame)) {
@@ -297,10 +318,12 @@
         vc.image = self.imageView.image;
         vc.delegate = self;
         [self presentViewController:vc animated:YES completion:nil];
-    }else if (indexPath.row == 2){
+    } else if (indexPath.row == 2){
         [self showMenu:self.frameMenu];
     } else if (indexPath.row == 3) {
         [self showMenu:self.arrowMenu];
+    } else if (indexPath.row == 4) {
+        [self showMenu:self.stickerMenu];
     }
 }
 

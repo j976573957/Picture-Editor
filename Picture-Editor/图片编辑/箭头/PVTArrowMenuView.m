@@ -143,6 +143,7 @@
         UIColor *color = arrowStyle.color;
         arrowStyle = [[PVTArrowStyle defaultStyles] objectAtIndex:indexPath.row];
         arrowStyle.color = color;
+        
     } else if (collectionView == _arrowColorCollectionView) {
         arrowStyle.color = [UIColor colorWithHexString:[UIColor availableColors][indexPath.row]];
     }
@@ -164,6 +165,9 @@
         [btn setImage:[UIImage imageNamed:selectedImageName] forState:UIControlStateSelected];
         btn.backgroundColor = HexColor(0xf4f4f4);
         [cell.contentView addSubview:btn];
+        [cell setSelectedCallBack:^(BOOL selected) {
+            btn.selected = selected;
+        }];
         cell.selected = cell.isSelected;
         return cell;
     } else if (collectionView == _arrowColorCollectionView) {

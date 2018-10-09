@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UICollectionViewCell+PVTExtra.h"
 
 @protocol PVTToolsBaseViewDelegate <NSObject>
 
