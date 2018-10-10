@@ -126,9 +126,34 @@
     }
 }
 
-- (void)circleViewDidPan:(UIPanGestureRecognizer *)pan
+- (void)circleViewDidPan:(UIPanGestureRecognizer *)sender
 {
+    CGPoint p = [sender translationInView:self.superview];
     
+    static CGFloat tmpR = 1;
+    static CGFloat tmpA = 0;
+    if(sender.state == UIGestureRecognizerStateBegan) {
+        [self prepareToSaveStatus];
+        
+        _initialPoint = [self.superview convertPoint:_btnTransition.center fromView:_btnTransition.superview];
+        
+        CGPoint p = CGPointMake(_initialPoint.x - self.center.x, _initialPoint.y - self.center.y);
+        tmpR = sqrt(p.x*p.x + p.y*p.y);
+        tmpA = atan2(p.y, p.x);
+        
+        _initialArg = _arg;
+        _initialScale = _scale;
+    }
+    
+    p = CGPointMake(_initialPoint.x + p.x - self.center.x, _initialPoint.y + p.y - self.center.y);
+    CGFloat R = sqrt(p.x*p.x + p.y*p.y);
+    CGFloat arg = atan2(p.y, p.x);
+    
+    _arg = _initialArg + arg - tmpA;
+    [self setScale:MAX(_initialScale * R / tmpR, 0.5)];
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        [self saveStatus];
+    }
 }
 
 + (void)setActiveElementView:(PVTBaseElementView*)view

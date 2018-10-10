@@ -96,6 +96,7 @@
     [self.stickerMenu setPreferredStyle:^(PVTStickerStyle *preferredStyle) {
         [weakSelf addNewSticker:preferredStyle];
     }];
+    [subMenuViews addObject:self.stickerMenu];
     
     //
     for (PVTToolsBaseView *view in subMenuViews) {
