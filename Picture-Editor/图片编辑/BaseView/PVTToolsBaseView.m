@@ -92,7 +92,7 @@
         CGFloat gap = (self.width - 20*2 - count*40)/(count+1);
         for (NSInteger i = 0; i < count; i++) {
             UIButton *item = items[i];
-            item.origin = CGPointMake(20+gap+(40+gap)*i, 79);
+            item.origin = CGPointMake(20+gap+(40+gap)*i, 0);
         }
         
         [self addSubview:item];

@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040584AC21829F3B007FB746 /* PVTBrushStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 040584AB21829F3B007FB746 /* PVTBrushStyle.m */; };
+		040584AF21829F93007FB746 /* PVTBrushView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040584AE21829F93007FB746 /* PVTBrushView.m */; };
+		04080A842174296E004426A2 /* PVTImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04080A832174296E004426A2 /* PVTImageScrollView.m */; };
+		04080A8721742AF3004426A2 /* PVTEImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04080A8621742AF3004426A2 /* PVTEImageView.m */; };
+		04130A262186E949007F78C1 /* PVTBrushMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04130A252186E949007F78C1 /* PVTBrushMenuView.m */; };
 		04201B35216071F50006974C /* PVTStickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04201B34216071F50006974C /* PVTStickerView.m */; };
 		04201B38216072060006974C /* PVTStickerStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 04201B37216072060006974C /* PVTStickerStyle.m */; };
 		04201B3B2160721C0006974C /* PVTStickerMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04201B3A2160721C0006974C /* PVTStickerMenuView.m */; };
+		0445963D21708D8D006CFE04 /* MosaicStyle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04F98DA5217037F000585A97 /* MosaicStyle.plist */; };
 		0445ADD5215B0E4C0078B6E6 /* PVTArrowStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0445ADD4215B0E4C0078B6E6 /* PVTArrowStyle.m */; };
 		0448E9A9211923470030C8E4 /* PVTSelectPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0448E9A8211923470030C8E4 /* PVTSelectPictureViewController.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		044A111D2123AD9400850DBB /* PVTToolsBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A111C2123AD9400850DBB /* PVTToolsBaseView.m */; };
@@ -40,6 +46,8 @@
 		045BDCF3215B14EE00C350C4 /* ArrowStyle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 045BDCF2215B14EE00C350C4 /* ArrowStyle.plist */; };
 		0460F3A12140BA14005F2105 /* UIColor+WTHexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460F3A02140BA14005F2105 /* UIColor+WTHexColor.m */; };
 		0461DDF3212A52CA00B072C0 /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461DDF2212A52CA00B072C0 /* GPUImageBeautifyFilter.m */; };
+		04651D05216EFD5500954FC7 /* PVTMosicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04651D04216EFD5500954FC7 /* PVTMosicView.m */; };
+		04651D08216EFD6900954FC7 /* PVTMosicStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 04651D07216EFD6900954FC7 /* PVTMosicStyle.m */; };
 		046533B82121428F004AB327 /* PVTFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 046533B72121428F004AB327 /* PVTFilter.m */; };
 		04669CEC216C2F4B00070A24 /* StickerStyle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04669CEB216C2F4B00070A24 /* StickerStyle.plist */; };
 		0466DF0B213E142E007ACC35 /* PVTEqualSpaceFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466DF0A213E142E007ACC35 /* PVTEqualSpaceFlowLayout.m */; };
@@ -63,6 +71,7 @@
 		04802D8C2159BFC6003CEE74 /* PVTArrowMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04802D8B2159BFC6003CEE74 /* PVTArrowMenuView.m */; };
 		04DEFDDE211C124F00C3E24D /* PVTEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DEFDDD211C124F00C3E24D /* PVTEditorViewController.m */; };
 		04F504FB214A0440007BB893 /* PVTFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F504FA214A0440007BB893 /* PVTFrameView.m */; };
+		04F98DA821704F6A00585A97 /* PVTMosicMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F98DA721704F6A00585A97 /* PVTMosicMenuView.m */; };
 		E36C4B2437F699912CB9C5A9 /* libPods-Picture-Editor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF52C0FB4AF93927E2B6D8FB /* libPods-Picture-Editor.a */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +93,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040584AA21829F3B007FB746 /* PVTBrushStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTBrushStyle.h; sourceTree = "<group>"; };
+		040584AB21829F3B007FB746 /* PVTBrushStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTBrushStyle.m; sourceTree = "<group>"; };
+		040584AD21829F93007FB746 /* PVTBrushView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTBrushView.h; sourceTree = "<group>"; };
+		040584AE21829F93007FB746 /* PVTBrushView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTBrushView.m; sourceTree = "<group>"; };
+		04080A822174296E004426A2 /* PVTImageScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTImageScrollView.h; sourceTree = "<group>"; };
+		04080A832174296E004426A2 /* PVTImageScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTImageScrollView.m; sourceTree = "<group>"; };
+		04080A8521742AF3004426A2 /* PVTEImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTEImageView.h; sourceTree = "<group>"; };
+		04080A8621742AF3004426A2 /* PVTEImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTEImageView.m; sourceTree = "<group>"; };
+		04130A242186E949007F78C1 /* PVTBrushMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTBrushMenuView.h; sourceTree = "<group>"; };
+		04130A252186E949007F78C1 /* PVTBrushMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTBrushMenuView.m; sourceTree = "<group>"; };
 		04201B33216071F50006974C /* PVTStickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTStickerView.h; sourceTree = "<group>"; };
 		04201B34216071F50006974C /* PVTStickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTStickerView.m; sourceTree = "<group>"; };
 		04201B36216072060006974C /* PVTStickerStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTStickerStyle.h; sourceTree = "<group>"; };
@@ -166,6 +185,10 @@
 		0460F3A02140BA14005F2105 /* UIColor+WTHexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+WTHexColor.m"; sourceTree = "<group>"; };
 		0461DDF1212A52C900B072C0 /* GPUImageBeautifyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautifyFilter.h; sourceTree = "<group>"; };
 		0461DDF2212A52CA00B072C0 /* GPUImageBeautifyFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageBeautifyFilter.m; sourceTree = "<group>"; };
+		04651D03216EFD5500954FC7 /* PVTMosicView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTMosicView.h; sourceTree = "<group>"; };
+		04651D04216EFD5500954FC7 /* PVTMosicView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTMosicView.m; sourceTree = "<group>"; };
+		04651D06216EFD6900954FC7 /* PVTMosicStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTMosicStyle.h; sourceTree = "<group>"; };
+		04651D07216EFD6900954FC7 /* PVTMosicStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTMosicStyle.m; sourceTree = "<group>"; };
 		046533B62121428F004AB327 /* PVTFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTFilter.h; sourceTree = "<group>"; };
 		046533B72121428F004AB327 /* PVTFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTFilter.m; sourceTree = "<group>"; };
 		04669CEB216C2F4B00070A24 /* StickerStyle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StickerStyle.plist; sourceTree = "<group>"; };
@@ -211,6 +234,9 @@
 		04DEFDDD211C124F00C3E24D /* PVTEditorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTEditorViewController.m; sourceTree = "<group>"; };
 		04F504F9214A0440007BB893 /* PVTFrameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTFrameView.h; sourceTree = "<group>"; };
 		04F504FA214A0440007BB893 /* PVTFrameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTFrameView.m; sourceTree = "<group>"; };
+		04F98DA5217037F000585A97 /* MosaicStyle.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MosaicStyle.plist; sourceTree = "<group>"; };
+		04F98DA621704F6A00585A97 /* PVTMosicMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVTMosicMenuView.h; sourceTree = "<group>"; };
+		04F98DA721704F6A00585A97 /* PVTMosicMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PVTMosicMenuView.m; sourceTree = "<group>"; };
 		57FF25F79B2BE54ED9814EC9 /* Pods-Picture-Editor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Picture-Editor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Picture-Editor/Pods-Picture-Editor.debug.xcconfig"; sourceTree = "<group>"; };
 		617B203045934E535AFBF31B /* Pods-Picture-Editor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Picture-Editor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Picture-Editor/Pods-Picture-Editor.release.xcconfig"; sourceTree = "<group>"; };
 		EF52C0FB4AF93927E2B6D8FB /* libPods-Picture-Editor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Picture-Editor.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -243,6 +269,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040584A921829C20007FB746 /* 画笔 */ = {
+			isa = PBXGroup;
+			children = (
+				040584AA21829F3B007FB746 /* PVTBrushStyle.h */,
+				040584AB21829F3B007FB746 /* PVTBrushStyle.m */,
+				040584AD21829F93007FB746 /* PVTBrushView.h */,
+				040584AE21829F93007FB746 /* PVTBrushView.m */,
+				04130A242186E949007F78C1 /* PVTBrushMenuView.h */,
+				04130A252186E949007F78C1 /* PVTBrushMenuView.m */,
+			);
+			path = "画笔";
+			sourceTree = "<group>";
+		};
 		04201B32216071510006974C /* 贴图 */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +334,20 @@
 			path = Arrows;
 			sourceTree = "<group>";
 		};
+		044C2CD0216DD30C0024EB53 /* 马赛克 */ = {
+			isa = PBXGroup;
+			children = (
+				04651D03216EFD5500954FC7 /* PVTMosicView.h */,
+				04651D04216EFD5500954FC7 /* PVTMosicView.m */,
+				04651D06216EFD6900954FC7 /* PVTMosicStyle.h */,
+				04651D07216EFD6900954FC7 /* PVTMosicStyle.m */,
+				04F98DA621704F6A00585A97 /* PVTMosicMenuView.h */,
+				04F98DA721704F6A00585A97 /* PVTMosicMenuView.m */,
+				04F98DA5217037F000585A97 /* MosaicStyle.plist */,
+			);
+			path = "马赛克";
+			sourceTree = "<group>";
+		};
 		04544D812147460F008DE38B /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +357,10 @@
 				0468B462213D2B18002D4979 /* PVTBaseStyle.m */,
 				04544D82214746CE008DE38B /* PVTBaseElementView.h */,
 				04544D83214746CE008DE38B /* PVTBaseElementView.m */,
+				04080A8521742AF3004426A2 /* PVTEImageView.h */,
+				04080A8621742AF3004426A2 /* PVTEImageView.m */,
+				04080A822174296E004426A2 /* PVTImageScrollView.h */,
+				04080A832174296E004426A2 /* PVTImageScrollView.m */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -543,6 +600,8 @@
 				0468B45D213D1FF6002D4979 /* 线框 */,
 				04802D892159BF81003CEE74 /* 箭头 */,
 				04201B32216071510006974C /* 贴图 */,
+				044C2CD0216DD30C0024EB53 /* 马赛克 */,
+				040584A921829C20007FB746 /* 画笔 */,
 				04DEFDDC211C124F00C3E24D /* PVTEditorViewController.h */,
 				04DEFDDD211C124F00C3E24D /* PVTEditorViewController.m */,
 			);
@@ -701,6 +760,7 @@
 				044A4315215C6F4100316B3C /* gj_sanjiao_3@2x.svg in Resources */,
 				045A2375215F506C00544D8E /* TOCropViewControllerLocalizable.strings in Resources */,
 				047B91C82117D11400939BAB /* Assets.xcassets in Resources */,
+				0445963D21708D8D006CFE04 /* MosaicStyle.plist in Resources */,
 				045A2258215F075A00544D8E /* LICENSE in Resources */,
 				044A4316215C6F4100316B3C /* gj_sanjiao_1@2x.svg in Resources */,
 				045BDCF3215B14EE00C350C4 /* ArrowStyle.plist in Resources */,
@@ -787,24 +847,31 @@
 				045A2377215F506C00544D8E /* TOCropViewControllerTransitioning.m in Sources */,
 				04201B38216072060006974C /* PVTStickerStyle.m in Sources */,
 				046533B82121428F004AB327 /* PVTFilter.m in Sources */,
+				04080A842174296E004426A2 /* PVTImageScrollView.m in Sources */,
 				045A2376215F506C00544D8E /* TOActivityCroppedImageProvider.m in Sources */,
 				0448E9A9211923470030C8E4 /* PVTSelectPictureViewController.m in Sources */,
 				045A2379215F506C00544D8E /* TOCropViewController.m in Sources */,
 				044A111D2123AD9400850DBB /* PVTToolsBaseView.m in Sources */,
+				04651D08216EFD6900954FC7 /* PVTMosicStyle.m in Sources */,
 				0466DF0B213E142E007ACC35 /* PVTEqualSpaceFlowLayout.m in Sources */,
 				04802D8C2159BFC6003CEE74 /* PVTArrowMenuView.m in Sources */,
+				04080A8721742AF3004426A2 /* PVTEImageView.m in Sources */,
+				04651D05216EFD5500954FC7 /* PVTMosicView.m in Sources */,
 				04544D84214746CE008DE38B /* PVTBaseElementView.m in Sources */,
 				0445ADD5215B0E4C0078B6E6 /* PVTArrowStyle.m in Sources */,
 				04201B3B2160721C0006974C /* PVTStickerMenuView.m in Sources */,
+				04F98DA821704F6A00585A97 /* PVTMosicMenuView.m in Sources */,
 				04719908215DB2A600DC244E /* PVTArrowView.m in Sources */,
 				0468B45C213CC4DD002D4979 /* UIImage+PVTRotation.m in Sources */,
 				0468B466213D2B3F002D4979 /* PVTFrameStyle.m in Sources */,
+				040584AF21829F93007FB746 /* PVTBrushView.m in Sources */,
 				047B91C32117D11300939BAB /* ViewController.m in Sources */,
 				047B91CE2117D11400939BAB /* main.m in Sources */,
 				045A237D215F506C00544D8E /* TOCropOverlayView.m in Sources */,
 				0469320C212678AF00C974BE /* UIImage+PVTFilter.m in Sources */,
 				045A237E215F506C00544D8E /* TOCropToolbar.m in Sources */,
 				045A237F215F506C00544D8E /* UIImage+CropRotate.m in Sources */,
+				040584AC21829F3B007FB746 /* PVTBrushStyle.m in Sources */,
 				0460F3A12140BA14005F2105 /* UIColor+WTHexColor.m in Sources */,
 				044A117D21240DCA00850DBB /* UIView_extra.m in Sources */,
 				045A237C215F506C00544D8E /* TOCropView.m in Sources */,
@@ -818,6 +885,7 @@
 				046757C6212F936800D185F2 /* PVTCropViewController.m in Sources */,
 				0469320221266A6500C974BE /* PVTFilterMenuView.m in Sources */,
 				045A237B215F506C00544D8E /* TOCropScrollView.m in Sources */,
+				04130A262186E949007F78C1 /* PVTBrushMenuView.m in Sources */,
 				047B91C02117D11300939BAB /* AppDelegate.m in Sources */,
 				045A225A215F075A00544D8E /* SVGEngine.mm in Sources */,
 				0468B463213D2B18002D4979 /* PVTBaseStyle.m in Sources */,

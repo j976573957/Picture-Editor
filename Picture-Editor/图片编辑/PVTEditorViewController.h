@@ -14,6 +14,8 @@ typedef NS_ENUM(NSUInteger, PVTImageEditMode) {
     PVTImageEditModeFrame,
     PVTImageEditModeArrow,
     PVTImageEditModeSticker,
+    PVTImageEditModeMosaic,
+    PVTImageEditModeBrush,
 };
 
 @interface PVTEditorViewController : UIViewController

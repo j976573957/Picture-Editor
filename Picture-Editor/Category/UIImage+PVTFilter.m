@@ -228,5 +228,12 @@
     return newImage;
 }
 
+- (UIImage *)gaussianBlur:(CGFloat)blur {
+    GPUImageGaussianBlurFilter * blurFilter = [[GPUImageGaussianBlurFilter alloc] init];
+    blurFilter.blurRadiusInPixels = blur;
+    UIImage *blurredImage = [blurFilter imageByFilteringImage:self];
+    return blurredImage;
+}
+
 
 @end

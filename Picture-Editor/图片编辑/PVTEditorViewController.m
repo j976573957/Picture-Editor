@@ -16,6 +16,13 @@
 #import "PVTArrowView.h"
 #import "PVTStickerView.h"
 #import "PVTStickerMenuView.h"
+#import "PVTMosicView.h"
+#import "PVTMosicMenuView.h"
+#import "PVTBrushView.h"
+#import "PVTBrushMenuView.h"
+
+#import "PVTImageScrollView.h"
+
 
 @interface PVTEditorToolsCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lbTitle;
@@ -30,6 +37,8 @@
     NSMutableArray *_tempFrames;
     NSMutableArray *_tempArrows;
     NSMutableArray *_tempStickers;
+    NSMutableArray *_tempMosaicPaths;
+    NSMutableArray *_savedBrushPaths;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *toolCollectionView;
@@ -39,8 +48,16 @@
 @property (strong, nonatomic) PVTFrameMenuView *frameMenu;
 @property (nonatomic, strong) PVTFrameStyle *frameStyle;
 @property (strong, nonatomic) PVTArrowMenuView *arrowMenu;
-@property (assign, nonatomic) PVTArrowStyle *arrowStyle;
+@property (strong, nonatomic) PVTArrowStyle *arrowStyle;
 @property (strong, nonatomic) PVTStickerMenuView *stickerMenu;
+@property (strong, nonatomic) PVTMosicView *mosaicView;
+@property (strong, nonatomic) PVTMosicMenuView *mosaicMenu;
+@property (strong, nonatomic) PVTMosicStyle *mosaicStyle;
+@property (strong, nonatomic) PVTBrushStyle *brushStyle;
+@property (strong, nonatomic) PVTBrushView *brushView;
+@property (strong, nonatomic) PVTBrushMenuView *brushMenu;
+
+@property (nonatomic, strong) PVTImageScrollView *imageScrollView;
 
 @end
 
@@ -51,16 +68,40 @@
     return [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:NSStringFromClass([PVTEditorViewController class])];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setupScrollView];
     [self initMainMenu];
 }
 
 #pragma mark - init
+- (void)setupScrollView
+{
+    self.imageScrollView = [[PVTImageScrollView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height - 64 - 49)];
+    self.imageScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [self.view addSubview:self.imageScrollView];
+//    self.imageView = _imageScrollView.imageView;
+    self.brushView = _imageScrollView.brushView;
+    self.mosaicView = _imageScrollView.mosaicView;
+//    self.borderView = _imageScrollView.borderView;
+    [_imageScrollView setImage:self.image];
+    
+    _brushStyle = [[PVTBrushStyle alloc] init];
+    self.brushView.brushStyle = _brushStyle;
+    
+    _mosaicStyle = [[PVTMosicStyle defaultStyles] firstObject];
+    self.mosaicView.mosaicStyle = _mosaicStyle;
+}
+
 - (void)initMainMenu
 {
-    _toolTitles = @[@"滤镜", @"编辑" ,@"线框" ,@"箭头" ,@"贴图"];
+    _toolTitles = @[@"滤镜", @"编辑" ,@"线框" ,@"箭头" ,@"贴图", @"马赛克", @"画笔"];
     NSMutableArray *subMenuViews = [NSMutableArray array];
     
     __weak typeof(self) weakSelf = self;
@@ -97,6 +138,43 @@
         [weakSelf addNewSticker:preferredStyle];
     }];
     [subMenuViews addObject:self.stickerMenu];
+    
+    //马赛克
+    self.mosaicMenu = [PVTMosicMenuView new];
+    [self.mosaicMenu setPreStep:^{
+        [weakSelf.mosaicView revoke];
+    }];
+    [self.mosaicMenu setNextStep:^{
+        [weakSelf.mosaicView recovery];
+    }];
+    [self.mosaicMenu setPreferredStyle:^(PVTMosicStyle *preferredStyle){
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            if (!preferredStyle.image) {
+                UIImage *image = [weakSelf.image gaussianBlur:20];
+                CGFloat s = weakSelf.imageView.width/image.size.width;
+                image = [UIImage imageWithCGImage:image.CGImage scale:1./s orientation:UIImageOrientationUp];
+                preferredStyle.image = image;
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                weakSelf.mosaicView.mosaicStyle = preferredStyle;
+                [weakSelf.mosaicView setNeedsDisplay];
+            });
+        });
+    }];
+    [subMenuViews addObject:self.mosaicMenu];
+    
+    //画笔
+    self.brushMenu = [PVTBrushMenuView new];
+    [self.brushMenu setPreStep:^{
+        [weakSelf.brushView revoke];
+    }];
+    [self.brushMenu setNextStep:^{
+        [weakSelf.brushView recovery];
+    }];
+    [self.brushMenu setPreferredStyle:^(PVTBrushStyle *preferredStyle){
+        weakSelf.brushView.brushStyle = preferredStyle;
+        [weakSelf.brushMenu setNeedsDisplay];
+    }];
     
     //
     for (PVTToolsBaseView *view in subMenuViews) {
@@ -141,6 +219,10 @@
             self.editMode = PVTImageEditModeArrow;
         }else if (view == _stickerMenu) {
             self.editMode = PVTImageEditModeSticker;
+        } else if (view == _mosaicMenu) {
+            self.editMode = PVTImageEditModeMosaic;
+        } else if (view == _brushMenu) {
+            self.editMode = PVTImageEditModeBrush;
         }
     }
     
@@ -162,6 +244,8 @@
 - (void)setEditMode:(PVTImageEditMode)editMode
 {
     _editMode = editMode;
+    self.brushView.userInteractionEnabled = (_editMode == PVTImageEditModeBrush);
+    self.mosaicView.userInteractionEnabled = (_editMode == PVTImageEditModeMosaic);
 }
 
 - (IBAction)close:(id)sender {
@@ -325,6 +409,10 @@
         [self showMenu:self.arrowMenu];
     } else if (indexPath.row == 4) {
         [self showMenu:self.stickerMenu];
+    } else if (indexPath.row == 5) {
+        [self showMenu:self.mosaicMenu];
+    } else if (indexPath.row == 6) {
+        [self showMenu:self.brushMenu];
     }
 }
 

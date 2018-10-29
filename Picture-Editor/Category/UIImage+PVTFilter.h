@@ -14,4 +14,7 @@
 
 - (UIImage *)thumbWithWidth:(CGFloat)width;
 
+/** 高斯模糊 */
+- (UIImage *)gaussianBlur:(CGFloat)blur;
+
 @end
