@@ -10,6 +10,7 @@
 #import "PVTEImageView.h"
 #import "PVTMosicView.h"
 #import "PVTBrushView.h"
+#import "PVTBorderView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PVTEImageView *imageView;
 @property (nonatomic, strong) PVTBrushView *brushView;
 @property (nonatomic, strong) PVTMosicView *mosaicView;
-//@property (nonatomic, strong) PVTBorderView *borderView;
+@property (nonatomic, strong) PVTBorderView *borderView;
 
 - (void)setImage:(UIImage *)image;  //传入image
 - (UIImage *)image; //画完之后取image

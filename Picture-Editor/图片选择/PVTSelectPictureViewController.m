@@ -191,6 +191,7 @@
         [self presentViewController:editorVC animated:YES completion:nil];
         [self getOriginalImage:asset callBack:^(UIImage *originalImage) {
             editorVC.imageView.image = originalImage;
+            editorVC.image = originalImage;
         }];
     }
 }

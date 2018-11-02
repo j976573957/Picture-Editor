@@ -34,19 +34,20 @@
     _imageView.contentMode = UIViewContentModeScaleToFill;
     _imageView.userInteractionEnabled = YES;
     
-    _mosaicView = [[PVTMosicView alloc] initWithFrame:self.bounds];
+    _mosaicView = [[PVTMosicView alloc] initWithFrame:_imageView.bounds];
     _mosaicView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-    _brushView = [[PVTBrushView alloc] initWithFrame:self.bounds];
+    _brushView = [[PVTBrushView alloc] initWithFrame:_imageView.bounds];
     _brushView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-//    _borderView = [[WTBorderView alloc] initWithFrame:CGRectInset(self.bounds, -.5, -.5)];
-//    _borderView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _borderView = [[PVTBorderView alloc] initWithFrame:CGRectInset(_imageView.bounds, -.5, -.5)];
+    _borderView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     [self addSubview:_scrollView];
     [_scrollView addSubview:_imageView];
     [_imageView addSubview:_mosaicView];
     [_imageView addSubview:_brushView];
+    [_imageView addSubview:_borderView];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureEvent)];
     tap.delaysTouchesBegan = YES;

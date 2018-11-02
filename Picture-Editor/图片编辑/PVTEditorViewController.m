@@ -20,6 +20,8 @@
 #import "PVTMosicMenuView.h"
 #import "PVTBrushView.h"
 #import "PVTBrushMenuView.h"
+#import "PVTBorderView.h"
+#import "PVTBorderMenuView.h"
 
 #import "PVTImageScrollView.h"
 
@@ -56,6 +58,9 @@
 @property (strong, nonatomic) PVTBrushStyle *brushStyle;
 @property (strong, nonatomic) PVTBrushView *brushView;
 @property (strong, nonatomic) PVTBrushMenuView *brushMenu;
+@property (strong, nonatomic) PVTBorderView *borderView;
+@property (strong, nonatomic) PVTBorderStyle *borderStyle;
+@property (strong, nonatomic) PVTBorderMenuView *borderMenu;
 
 @property (nonatomic, strong) PVTImageScrollView *imageScrollView;
 
@@ -83,14 +88,14 @@
 #pragma mark - init
 - (void)setupScrollView
 {
-    self.imageScrollView = [[PVTImageScrollView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height - 64 - 49)];
+    self.imageScrollView = [[PVTImageScrollView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height - 64 - 49-30)];
     self.imageScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:self.imageScrollView];
 //    self.imageView = _imageScrollView.imageView;
     self.brushView = _imageScrollView.brushView;
     self.mosaicView = _imageScrollView.mosaicView;
-//    self.borderView = _imageScrollView.borderView;
-    [_imageScrollView setImage:self.image];
+    self.borderView = _imageScrollView.borderView;
+    [_imageScrollView setImage:self.imageView.image];
     
     _brushStyle = [[PVTBrushStyle alloc] init];
     self.brushView.brushStyle = _brushStyle;
@@ -101,7 +106,7 @@
 
 - (void)initMainMenu
 {
-    _toolTitles = @[@"滤镜", @"编辑" ,@"线框" ,@"箭头" ,@"贴图", @"马赛克", @"画笔"];
+    _toolTitles = @[@"滤镜", @"编辑" ,@"线框" ,@"箭头" ,@"贴图", @"马赛克", @"画笔", @"边框"];
     NSMutableArray *subMenuViews = [NSMutableArray array];
     
     __weak typeof(self) weakSelf = self;
@@ -175,6 +180,14 @@
         weakSelf.brushView.brushStyle = preferredStyle;
         [weakSelf.brushMenu setNeedsDisplay];
     }];
+    [subMenuViews addObject:self.brushMenu];
+    
+    //边框
+    self.borderMenu = [PVTBorderMenuView new];
+    [self.borderMenu setPreferredStyle:^(PVTBorderStyle *preferredStyle) {
+        [weakSelf addNewBorder:preferredStyle];
+    }];
+    [subMenuViews addObject:self.borderMenu];
     
     //
     for (PVTToolsBaseView *view in subMenuViews) {
@@ -196,6 +209,15 @@
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     pan.delegate = self;
     [_imageView addGestureRecognizer:pan];
+}
+
+- (void)setImage:(UIImage *)image {
+    _image = image;
+    [self.imageScrollView setImage:image];
+    self.filterMenu.image = image;
+    if (self.borderMenu.preferredStyle) {
+        self.borderMenu.preferredStyle(_borderView.borderStyle);
+    }
 }
 
 #pragma mark - event
@@ -223,6 +245,8 @@
             self.editMode = PVTImageEditModeMosaic;
         } else if (view == _brushMenu) {
             self.editMode = PVTImageEditModeBrush;
+        } else if (view == _borderMenu) {
+            self.editMode = PVTImageEditModeBorder;
         }
     }
     
@@ -371,6 +395,12 @@
     [PVTBaseElementView setActiveElementView:sticker];
 }
 
+/** 边框 */
+- (void)addNewBorder:(PVTBorderStyle *)style {
+    _borderStyle = _borderView.borderStyle;
+    _borderView.borderStyle = style;
+}
+
 #pragma mark - UIGestureDelegate
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     if (gestureRecognizer.view == _imageView && (_editMode == PVTImageEditModeArrow || _editMode == PVTImageEditModeFrame)) {
@@ -413,6 +443,8 @@
         [self showMenu:self.mosaicMenu];
     } else if (indexPath.row == 6) {
         [self showMenu:self.brushMenu];
+    } else if (indexPath.row == 7) {
+        [self showMenu:self.borderMenu];
     }
 }
 
